@@ -3,181 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Float UI</title>
+    <title>freegroup.de — things that build things</title>
+    <meta name="description" content="freegroup.de — the workshop of a developer by heart. Diagram engines, circuit simulators, CNC toolpaths and other side quests. Non-profit, open source, just for fun.">
+    <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0e0e0c" media="(prefers-color-scheme: dark)">
+    <meta property="og:title" content="freegroup.de — things that build things">
+    <meta property="og:description" content="Diagram engines, circuit simulators, CNC toolpaths. Built for fun, shared for free.">
+    <meta property="og:image" content="https://freegroup.de/images/patternmaster.webp">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5b1f'/%3E%3Cpath d='M0 16 16 0M0 32 32 0M16 32 32 16M0 16l16 16M0 0l32 32M16 0l16 16' stroke='%23fff' stroke-opacity='.45' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-    <!-- Vertical Sticky Navigation (Green Glass) -->
-    <div class="nav-wrapper">
-        <div class="nav-container reveal visible">
+    <header class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="#top" class="brand"><span class="brand-mark" aria-hidden="true"></span><span>freegroup<span class="dim">.de</span></span></a>
             <nav>
-                <a href="#home" class="active">Home</a>
-                <a href="#about">Profile</a>
-                <a href="#projects">Projects</a>
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="https://github.com/freegroup" target="_blank" rel="noopener">GitHub&nbsp;↗</a>
             </nav>
+            <span class="spindle mono" id="spindle" data-state="idle"><i></i><span id="spindle-label">spindle idle</span></span>
         </div>
-    </div>
+    </header>
 
-    <div class="content-wrapper">
+    <main id="top" class="wrap">
 
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-bg"></div>
-            <h1 class="reveal delay-1">Good afternoon, stranger</h1>
-            <p class="lead reveal delay-2">
-                Welcome to <strong>freegroup.de</strong>. I code for fun and non-profit. <br>
-                This is my playground for all things software development.
+        <!-- Hero -->
+        <section class="hero">
+            <p class="eyebrow mono" id="greeting">// hello, stranger.</p>
+            <h1>I build things<br>that <span class="hl">build things.</span></h1>
+            <p class="lead">
+                Developer by heart, maker by hand. Software is great&nbsp;— software that makes <em>hardware</em> move is better.
+                Circuit simulators, diagram engines, CNC toolpaths and a respectable number of blinking LEDs.
             </p>
+
+            <div class="machine" id="machine">
+                <div class="machine-bar mono">
+                    <span><span class="dim">JOB</span> <span id="job-name">hello.nc</span></span>
+                    <span id="coords">X   0.00  Y   0.00  Z   5.00</span>
+                </div>
+                <div class="machine-body">
+                    <div class="bed"><canvas id="bed" aria-label="A CNC machine milling text into a wooden plate" role="img"></canvas></div>
+                    <pre class="gcode mono" id="gcode" aria-hidden="true"></pre>
+                </div>
+                <form class="job-form" id="job-form">
+                    <label for="job-text" class="mono">mill&nbsp;›</label>
+                    <input id="job-text" maxlength="14" value="hello" autocomplete="off" spellcheck="false" placeholder="type something">
+                    <button type="submit">▶&nbsp;Run job</button>
+                </form>
+            </div>
+
+            <ul class="facts mono">
+                <li><b>9</b> projects shipped</li>
+                <li><b>∞</b> side quests</li>
+                <li><b>0</b> ads, trackers, cookies</li>
+                <li><b>1</b> very patient CNC mill</li>
+            </ul>
         </section>
 
-        <!-- Profile / About Section -->
-        <section id="about" style="text-align: center;">
-             <h2 class="reveal">Profile Overview</h2>
-             <p class="reveal delay-1" style="color: var(--text-secondary); max-width: 700px; margin: 0 auto 40px auto; font-size: 1.1rem; line-height: 1.8;">
-                I am a <strong>developer by heart</strong>. <br>I don't just write code; I build solutions, automate the boring stuff, and bring ideas to life. <br>From backend systems to 3D printing, I love everything related to software and awesome tech.
-             </p>
+        <!-- Heart project -->
+        <section id="work" class="section">
+            <div class="section-head reveal">
+                <span class="idx mono">01</span>
+                <h2>The heart project</h2>
+            </div>
 
-             <div class="skills-grid reveal delay-2">
-                 <div class="skill-item">Full Stack</div>
-                 <div class="skill-item">Node.js</div>
-                 <div class="skill-item">Python</div>
-                 <div class="skill-item">ML / AI</div>
-                 <div class="skill-item">K8s & Docker</div>
-                 <div class="skill-item">Cloud (GCP/AWS)</div>
-                 <div class="skill-item">Arduino</div>
-                 <div class="skill-item">3D Printing</div>
-             </div>
+            <a class="feature feature--heart reveal" href="https://electra.academy" target="_blank" rel="noopener">
+                <div class="feature-shot feature-shot--light">
+                    <img src="images/electra-academy.webp" width="1200" height="655" alt="A digital circuit with logic gates and flip-flops in Electra Academy">
+                </div>
+                <div class="feature-text">
+                    <span class="badge mono">♥ HEART PROJECT</span>
+                    <h3>Electra Academy</h3>
+                    <p class="feature-tag">You understand circuits by building them.</p>
+                    <p>
+                        A free platform for digital electronics: drag gates onto the canvas, wire them up and watch the current flow.
+                        When something doesn't work, you see <em>why</em>. No account, no install, free for schools.
+                    </p>
+                    <ul class="trio">
+                        <li><b>Simulator</b><span>build · simulate · understand</span></li>
+                        <li><b>Author</b><span>lessons, worksheets, flip cards</span></li>
+                        <li><b>Designer</b><span>your own parts, in a few lines of JS</span></li>
+                    </ul>
+                    <span class="cta">Open Electra Academy <span aria-hidden="true">→</span></span>
+                </div>
+            </a>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2 class="reveal" style="text-align: center; margin-bottom: 40px;">Playground & Projects</h2>
+        <!-- Featured -->
+        <section class="section">
+            <div class="section-head reveal">
+                <span class="idx mono">02</span>
+                <h2>Fresh off the mill</h2>
+            </div>
+
+            <a class="feature reveal" href="https://freegroup.github.io/patternmaster/" target="_blank" rel="noopener">
+                <div class="feature-text">
+                    <span class="badge mono">NEW · 2026</span>
+                    <h3>PatternMaster</h3>
+                    <p class="feature-tag">Wood in. Pattern out.</p>
+                    <p>
+                        Pick a pattern&nbsp;— diamonds, waves, honeycomb&nbsp;— nudge a few sliders and see the milled workpiece
+                        in 3D before a single chip flies. PatternMaster computes the toolpaths, you press start.
+                        Runs in the browser. No install, no account.
+                    </p>
+                    <ul class="tags mono"><li>CNC</li><li>3D preview</li><li>Toolpaths</li><li>Browser</li></ul>
+                    <span class="cta">Open PatternMaster <span aria-hidden="true">→</span></span>
+                </div>
+                <div class="feature-shot">
+                    <img src="images/patternmaster-viewer.webp" width="596" height="596" alt="PatternMaster showing a 3D preview of a diamond pattern milled into wood">
+                </div>
+            </a>
+        </section>
+
+        <!-- Archive -->
+        <section class="section">
+            <div class="section-head reveal">
+                <span class="idx mono">03</span>
+                <h2>From the workshop</h2>
+                <p class="section-sub">New toys and old builds. Still running. Mostly.</p>
+            </div>
+
             <div class="grid">
-                
-                <a href="https://electra.academy" target="_blank" class="card reveal delay-1">
-                    <div class="card-image" style="background-image: url('images/electra-academy.png');">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Electra Academy</h3>
-                        <p>Educational platform for electronics and circuit simulation.</p>
-                        <div class="card-meta">Education · Simulation</div>
+                <a href="https://freegroup.github.io/8-Bit-CSS-Icon-Builder/" target="_blank" rel="noopener" class="card reveal">
+                    <div class="card-img pixel" aria-hidden="true"><span class="invader"></span></div>
+                    <div class="card-body">
+                        <div class="card-top mono"><span>A-01 <em class="new">NEW</em></span><span class="arrow" aria-hidden="true">↗</span></div>
+                        <h3>8-Bit CSS Icon Builder</h3>
+                        <p>Paint pixel icons, get pure CSS back&nbsp;— one element, a pile of box-shadows. The invader above is made exactly that way.</p>
+                        <ul class="tags mono"><li>Pixel art</li><li>CSS</li><li>Editor</li></ul>
                     </div>
                 </a>
-
-                <a href="https://freegroup.github.io/CampingElectricCalculator/#/" target="_blank" class="card reveal delay-2">
-                    <div class="card-image" style="background-image: url('images/camping-calc.png');">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
+                <a href="https://freegroup.github.io/CampingElectricCalculator/#/" target="_blank" rel="noopener" class="card reveal">
+                    <div class="card-img"><img src="images/camping-calc.webp" loading="lazy" alt=""></div>
+                    <div class="card-body">
+                        <div class="card-top mono"><span>A-02</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>Camping Calc</h3>
-                        <p>Utility tool to calculate power consumption for camping trips.</p>
-                        <div class="card-meta">Utility · PWA · Vue</div>
+                        <p>Will the battery survive the weekend? Power budgeting for your camping trip, before the fridge goes quiet.</p>
+                        <ul class="tags mono"><li>PWA</li><li>Vue</li><li>Utility</li></ul>
                     </div>
                 </a>
 
-                <a href="https://github.com/freegroup/draw2d" target="_blank" class="card reveal delay-3">
-                    <div class="card-image" style="background-image: url('images/draw2d.png');">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
+                <a href="https://github.com/freegroup/draw2d" target="_blank" rel="noopener" class="card reveal">
+                    <div class="card-img"><img src="images/draw2d.webp" loading="lazy" alt=""></div>
+                    <div class="card-body">
+                        <div class="card-top mono"><span>A-03</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>Draw2D</h3>
-                        <p>A powerful JavaScript library to create flowcharts and diagrams.</p>
-                        <div class="card-meta">Library · JavaScript · SVG</div>
+                        <p>A JavaScript library for flowcharts, diagrams and anything made of boxes and lines.</p>
+                        <ul class="tags mono"><li>Library</li><li>JavaScript</li><li>SVG</li></ul>
                     </div>
                 </a>
 
-                 <a href="https://github.com/freegroup/draw2d_dhtml" target="_blank" class="card reveal delay-3">
-                    <div class="card-image" style="background-image: url('images/draw2d-dhtml.png');">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Draw2D DHTML</h3>
-                        <p>Legacy DHTML version of the diagramming library.</p>
-                        <div class="card-meta">Legacy · DHTML</div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/freegroup/HoruCNC" target="_blank" class="card reveal delay-2">
-                    <div class="card-image" style="background-image: url('images/horucnc.png');">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
+                <a href="https://github.com/freegroup/HoruCNC" target="_blank" rel="noopener" class="card reveal">
+                    <div class="card-img"><img src="images/horucnc.webp" loading="lazy" alt=""></div>
+                    <div class="card-body">
+                        <div class="card-top mono"><span>A-04</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>HoruCNC</h3>
-                        <p>Image to G-Code converter for CNC milling.</p>
-                        <div class="card-meta">CNC · G-Code · GRBL</div>
+                        <p>Turns images into G-code for CNC milling. PatternMaster's older, grumpier sibling.</p>
+                        <ul class="tags mono"><li>CNC</li><li>G-Code</li><li>GRBL</li></ul>
                     </div>
                 </a>
 
-                <a href="https://github.com/freegroup/eagle_viewer" target="_blank" class="card reveal delay-3">
-                    <div class="card-image" style="background-image: url('images/eagle-viewer.png');">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
+                <a href="https://github.com/freegroup/eagle_viewer" target="_blank" rel="noopener" class="card reveal">
+                    <div class="card-img"><img src="images/eagle-viewer.webp" loading="lazy" alt=""></div>
+                    <div class="card-body">
+                        <div class="card-top mono"><span>A-05</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>Eagle Viewer</h3>
-                        <p>Browser-based viewer for Eagle PCB files. Built to understand and render the format efficiently.</p>
-                        <div class="card-meta">PCB · Parser · WebGL</div>
+                        <p>Renders Eagle PCB files right in the browser. Built to understand the format, kept because it's fast.</p>
+                        <ul class="tags mono"><li>PCB</li><li>Parser</li><li>WebGL</li></ul>
                     </div>
                 </a>
 
+                <a href="https://github.com/freegroup/DigitalSimulator" target="_blank" rel="noopener" class="card reveal">
+                    <div class="card-img circuit" aria-hidden="true">
+                        <svg viewBox="0 0 320 200" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <path class="wire" d="M41 60H100M41 100H100M41 150H170V125H193M160 80H170V95H193M222 110H269"/>
+                            <path class="wire flow" d="M41 60H100M41 100H100M160 80H170V95H193M222 110H269"/>
+                            <path class="gate" d="M100 45H125A35 35 0 0 1 125 115H100Z"/>
+                            <path class="gate" d="M185 85Q205 85 222 110Q205 135 185 135Q197 110 185 85Z"/>
+                            <g class="sw"><circle cx="34" cy="60" r="7"/><circle cx="34" cy="100" r="7"/><circle cx="34" cy="150" r="7"/></g>
+                            <circle class="led" cx="280" cy="110" r="11"/>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-top mono"><span>A-06</span><span class="arrow" aria-hidden="true">↗</span></div>
+                        <h3>DigitalSimulator</h3>
+                        <p>A digital logic simulator for Windows: drop gates and flip-flops, wire them up, watch the bits flow. C++ with Java bindings, from the CRT era.</p>
+                        <ul class="tags mono"><li>Windows</li><li>C++</li><li>Logic</li></ul>
+                    </div>
+                </a>
+
+                <a href="https://freegroup.github.io/draw2d_dhtml/demo/" target="_blank" rel="noopener" class="card card--wide w98-desk reveal">
+                    <div class="w98">
+                        <div class="w98-title">
+                            <span><span class="w98-ie" aria-hidden="true">e</span> Draw2D DHTML - Microsoft Internet Explorer</span>
+                            <span class="w98-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span>
+                        </div>
+                        <div class="w98-menu" aria-hidden="true"><u>F</u>ile <u>E</u>dit <u>V</u>iew F<u>a</u>vorites <u>T</u>ools <u>H</u>elp</div>
+                        <div class="w98-addr" aria-hidden="true">
+                            <span>Address</span>
+                            <span class="w98-field">http://www.freegroup.de/draw2d/demo.htm</span>
+                            <span class="w98-go">Go</span>
+                        </div>
+
+                        <div class="w98-page">
+                            <figure class="w98-fig">
+                                <img src="images/draw2d-dhtml.webp" loading="lazy" width="480" height="300" alt="The original Draw2D DHTML port demo: green figures connected by lines">
+                                <figcaption>Fig. 1 &mdash; the real demo. Still running.</figcaption>
+                            </figure>
+                            <figure class="w98-fig" aria-hidden="true">
+                                <div class="w98-paint" id="divpaint"></div>
+                                <figcaption>Fig. 2 &mdash; this one costs <b id="divcount">2,826</b> &lt;div&gt;s</figcaption>
+                            </figure>
+
+                            <div class="w98-text">
+                                <div class="card-top mono"><span>A-07 · MUSEUM</span><span class="arrow" aria-hidden="true">↗</span></div>
+                                <h3>Draw2D DHTML</h3>
+                                <p class="w98-sub">Where it all began, ~20 years ago.</p>
+                                <p>
+                                    No <code>&lt;canvas&gt;</code>. No SVG you could rely on. So how do you draw a line in a browser?
+                                    You place one tiny <code>&lt;div&gt;</code> for <em>every single pixel</em>. Curves, connections, shapes,
+                                    drag&nbsp;&amp;&nbsp;drop&nbsp;— all of it. Fig.&nbsp;2 is drawn exactly that way, right here in your browser.
+                                </p>
+                                <p>And yes: it still runs. Go click through the demos.</p>
+                                <span class="w98-button">Open the demos &gt;&gt;</span>
+                                <div class="w98-badges" aria-hidden="true">
+                                    <span class="b88 b88-ie">best viewed with<b>IE 6.0</b></span>
+                                    <span class="b88 b88-np">made with<b>Notepad</b></span>
+                                    <span class="b88 b88-uc">under<b>construction</b></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w98-status" aria-hidden="true">
+                            <span>Done</span>
+                            <span>visitor #<span class="w98-counter">000451</span></span>
+                            <span>🌐 Internet</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </section>
 
-        <footer>
-            <p>&copy; 2026 freegroup.de</p>
-        </footer>
-    
-    </div> <!-- End content-wrapper -->
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="section-head reveal">
+                <span class="idx mono">04</span>
+                <h2>About the operator</h2>
+            </div>
 
-    <!-- Scroll Hooks Script -->
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p class="big">Hardware and software&nbsp;— that's where my heart is. Especially the spot where one makes the other move.</p>
+                    <p>
+                        I don't just write code: I build solutions, automate the boring stuff and bring ideas to life. From backend systems
+                        to logic gates, from G-code to 3D printing&nbsp;— if it compiles, clicks, blinks or spins, I'm probably tinkering with it.
+                    </p>
+                    <p>
+                        Everything here is non-profit and open source. Built because it was fun, shared because it might be useful to someone.
+                    </p>
+                    <p><a class="link" href="https://github.com/freegroup" target="_blank" rel="noopener">Find the source on GitHub →</a></p>
+                </div>
+
+                <div class="bom reveal">
+                    <div class="bom-head mono"><span>BILL OF MATERIALS</span><span>REV 2026</span></div>
+                    <div class="bom-scroll">
+                        <table class="mono">
+                            <thead><tr><th>#</th><th>Part</th><th>Notes</th></tr></thead>
+                            <tbody>
+                                <tr><td>01</td><td>Full Stack</td><td>from pixel to packet</td></tr>
+                                <tr><td>02</td><td>Node.js</td><td>daily driver</td></tr>
+                                <tr><td>03</td><td>Python</td><td>duct tape for the universe</td></tr>
+                                <tr><td>04</td><td>ML / AI</td><td>teaching rocks to think</td></tr>
+                                <tr><td>05</td><td>K8s &amp; Docker</td><td>containers all the way down</td></tr>
+                                <tr><td>06</td><td>Cloud (GCP/AWS)</td><td>someone else's computer</td></tr>
+                                <tr><td>07</td><td>Arduino</td><td>blinks LEDs professionally</td></tr>
+                                <tr><td>08</td><td>3D Printing</td><td>spaghetti, occasionally parts</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="wrap footer-inner">
+            <p class="mono">M30 <span class="dim">; end of program</span></p>
+            <p>© 2026 freegroup.de · Hand-written HTML. No frameworks were harmed.</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
- </body>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
