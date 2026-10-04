@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candle — shared location</title>
+  <meta name="robots" content="noindex">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1.5rem; padding: 2rem 1.25rem;
+      background: #0e0e0c; color: #ffc004;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.4;
+    }
+    h1 { font-size: 1.5rem; margin: 0; }
+    .card {
+      width: 100%; max-width: 28rem;
+      background: #141414; border: 2px solid rgba(255,192,4,.4); border-radius: 16px;
+      padding: 1.25rem 1.25rem;
+    }
+    .name { font-size: 1.6rem; font-weight: 700; margin: 0 0 .5rem; word-break: break-word; }
+    .coords { font-size: 1rem; color: #bda43a; margin: 0; }
+    .actions { width: 100%; max-width: 28rem; display: flex; flex-direction: column; gap: .75rem; }
+    a.btn {
+      display: block; text-align: center; text-decoration: none;
+      padding: .9rem 1rem; border-radius: 14px; font-size: 1.15rem; font-weight: 600;
+    }
+    a.primary { background: #ffc004; color: #141414; }
+    a.secondary { background: transparent; color: #ffc004; border: 2px solid #ffc004; }
+    p.hint { max-width: 28rem; text-align: center; color: #bda43a; font-size: .95rem; margin: 0; }
+    noscript { color: #ffc004; }
+  </style>
+</head>
+<body>
+  <h1>Candle</h1>
+  <div class="card">
+    <p class="name" id="name">Shared location</p>
+    <p class="coords" id="coords"></p>
+  </div>
+  <div class="actions">
+    <a class="btn primary" id="maps" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+    <a class="btn secondary" id="play"
+       href="https://play.google.com/store/apps/details?id=de.freegroup.candle.app"
+       target="_blank" rel="noopener">Get Candle on Google Play</a>
+  </div>
+  <p class="hint">If you have Candle installed, this link opens it and imports the point.
+     Otherwise install Candle, then open the link again.</p>
+  <noscript><p class="hint">Enable JavaScript to see the shared location.</p></noscript>
+  <script>
+    // Decodes the ?d= payload (base64url of the same JSON the app shares) and shows it.
+    function base64UrlDecode(s) {
+      s = s.replace(/-/g, '+').replace(/_/g, '/');
+      while (s.length % 4) s += '=';
+      return decodeURIComponent(escape(atob(s)));
+    }
+    try {
+      const d = new URLSearchParams(location.search).get('d');
+      const data = JSON.parse(base64UrlDecode(d));
+      const item = (data.locations && data.locations[0]) || (data.voicepins && data.voicepins[0]);
+      if (item) {
+        const label = item.memo && item.memo.length ? item.memo
+          : (item.formattedAddress || item.name || 'Shared location');
+        document.getElementById('name').textContent = label;
+        const lat = item.lat, lon = item.lon;
+        if (typeof lat === 'number' && typeof lon === 'number') {
+          document.getElementById('coords').textContent = lat.toFixed(6) + ', ' + lon.toFixed(6);
+          document.getElementById('maps').href =
+            'https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lon;
+        }
+      }
+    } catch (e) {
+      document.getElementById('coords').textContent = 'This link could not be read.';
+    }
+  </script>
+</body>
+</html>

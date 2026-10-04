@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.freegroup.candle.app",
+      "sha256_cert_fingerprints": [
+        "A7:BC:1A:19:E0:46:E6:3B:96:79:74:9D:8E:8A:6F:3F:67:ED:9E:87:E0:86:5E:6A:38:88:67:E8:3D:D8:7D:13",
+        "D1:D3:A6:59:77:98:C7:9D:70:B4:91:EF:0E:E2:F0:AE:E2:C4:01:9F:F4:1C:F9:39:B3:42:69:11:51:2C:33:CF"
+      ]
+    }
+  }
+]

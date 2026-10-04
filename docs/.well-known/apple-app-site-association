@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["U74C75726B.de.freegroup.candle"],
+        "components": [
+          { "/": "/candle/share/*", "comment": "Candle share links open the app" }
+        ]
+      }
+    ]
+  }
+}
