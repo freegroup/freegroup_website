@@ -476,3 +476,54 @@
         'color:inherit'
     );
 })();
+
+/* ------------------------------------------------------------------
+   Lightbox — click a project image to view it at full aspect ratio
+   ------------------------------------------------------------------ */
+(function () {
+    const imgs = document.querySelectorAll('.feature-shot img, .card-img img, .about-portrait img');
+    if (!imgs.length) return;
+
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Image viewer');
+    box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">×</button><img alt="">';
+    document.body.appendChild(box);
+
+    const view = box.querySelector('img');
+    const closeBtn = box.querySelector('.lightbox-close');
+    let lastFocus = null;
+
+    function open(src, alt) {
+        lastFocus = document.activeElement;
+        view.src = src;
+        view.alt = alt || '';
+        box.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+    }
+    function close() {
+        box.classList.remove('open');
+        document.body.style.overflow = '';
+        view.src = '';
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    imgs.forEach((img) => {
+        const holder = img.closest('.feature-shot, .card-img, .about-portrait');
+        if (!holder) return;
+        holder.classList.add('zoomable');
+        holder.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            open(img.currentSrc || img.src, img.alt);
+        });
+    });
+
+    box.addEventListener('click', (e) => { if (e.target === box || e.target === closeBtn) close(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && box.classList.contains('open')) close();
+    });
+})();

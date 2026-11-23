@@ -5,16 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>freegroup.de — things that build things</title>
     <meta name="description" content="freegroup.de — the workshop of a developer by heart. Diagram engines, circuit simulators, CNC toolpaths and other side quests. Non-profit, open source, just for fun.">
-    <meta name="theme-color" content="#f3f0e8" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0e0e0c" media="(prefers-color-scheme: dark)">
+    <link rel="canonical" href="https://freegroup.de/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="author" content="Andreas Herz">
+    <meta name="keywords" content="CNC, CAD/CAM, G-Code, toolpaths, CncCraft, PatternMaster, Electra Academy, circuit simulator, Draw2D, open source, maker">
+    <meta name="theme-color" content="#f4f5f8" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://freegroup.de/">
+    <meta property="og:site_name" content="freegroup.de">
+    <meta property="og:locale" content="en_US">
     <meta property="og:title" content="freegroup.de — things that build things">
     <meta property="og:description" content="Diagram engines, circuit simulators, CNC toolpaths. Built for fun, shared for free.">
     <meta property="og:image" content="https://freegroup.de/images/patternmaster.webp">
+    <meta property="og:image:width" content="1440">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:alt" content="PatternMaster — a 3D preview of a pattern milled into wood">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="freegroup.de — things that build things">
+    <meta name="twitter:description" content="Diagram engines, circuit simulators, CNC toolpaths. Built for fun, shared for free.">
+    <meta name="twitter:image" content="https://freegroup.de/images/patternmaster.webp">
+    <meta name="twitter:image:alt" content="PatternMaster — a 3D preview of a pattern milled into wood">
+
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5b1f'/%3E%3Cpath d='M0 16 16 0M0 32 32 0M16 32 32 16M0 16l16 16M0 0l32 32M16 0l16 16' stroke='%23fff' stroke-opacity='.45' stroke-width='2'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://freegroup.de/#website",
+          "url": "https://freegroup.de/",
+          "name": "freegroup.de",
+          "description": "The workshop of a developer by heart — diagram engines, circuit simulators, CNC toolpaths and other side quests.",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://freegroup.de/#person" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://freegroup.de/#person",
+          "name": "Andreas Herz",
+          "url": "https://freegroup.de/",
+          "sameAs": ["https://github.com/freegroup"],
+          "jobTitle": "Software Developer & Maker"
+        },
+        {
+          "@type": "ItemList",
+          "name": "Projects",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "CncCraft", "description": "Free parametric CAD/CAM application for CNC milling machines.", "url": "https://freegroup.github.io/CncCraft/" },
+            { "@type": "ListItem", "position": 2, "name": "PatternMaster", "description": "Browser tool that turns patterns into CNC toolpaths with a 3D preview.", "url": "https://freegroup.github.io/patternmaster/" },
+            { "@type": "ListItem", "position": 3, "name": "HoruCNC", "description": "Turns images into G-code contour toolpaths for CNC milling and lasers.", "url": "https://freegroup.github.io/HoruCNC/" },
+            { "@type": "ListItem", "position": 4, "name": "Electra Academy", "description": "Free platform for learning digital electronics by building circuits.", "url": "https://electra.academy" },
+            { "@type": "ListItem", "position": 5, "name": "Draw2D", "description": "JavaScript library for flowcharts, diagrams and connections.", "url": "https://github.com/freegroup/draw2d" }
+          ]
+        }
+      ]
+    }
+    </script>
     <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -66,36 +120,34 @@
             </ul>
         </section>
 
-        <!-- Heart project -->
+        <!-- CncCraft -->
         <section id="work" class="section">
             <div class="section-head reveal">
                 <span class="idx mono">01</span>
-                <h2>The heart project</h2>
+                <h2>Draw. Mill. Done.</h2>
             </div>
 
-            <a class="feature feature--heart reveal" href="https://electra.academy" target="_blank" rel="noopener">
-                <div class="feature-shot feature-shot--light">
-                    <img src="images/electra-academy.webp" width="1200" height="655" alt="A digital circuit with logic gates and flip-flops in Electra Academy">
+            <a class="feature feature--flip reveal" href="https://freegroup.github.io/CncCraft/" target="_blank" rel="noopener">
+                <div class="feature-shot">
+                    <img src="images/cnccraft.webp" width="1400" height="851" alt="CncCraft parametric CAD/CAM application showing a part design with milling toolpaths">
                 </div>
                 <div class="feature-text">
-                    <span class="badge mono">♥ HEART PROJECT</span>
-                    <h3>Electra Academy</h3>
-                    <p class="feature-tag">You understand circuits by building them.</p>
+                    <span class="badge mono">FREE · DOWNLOAD</span>
+                    <h3>CncCraft</h3>
+                    <p class="feature-tag">From the first sketch to finished G-Code.</p>
                     <p>
-                        A free platform for digital electronics: drag gates onto the canvas, wire them up and watch the current flow.
-                        When something doesn't work, you see <em>why</em>. No account, no install, free for schools.
+                        A free, parametric CAD/CAM application for CNC milling machines.
+                        Draw your design, pick a toolpath strategy, preview the result in 3D and export G-Code.
+                        Variables and formulas propagate through the whole model — change one dimension and everything follows.
+                        No subscription, no cloud, runs on Mac, Windows and Linux.
                     </p>
-                    <ul class="trio">
-                        <li><b>Simulator</b><span>build · simulate · understand</span></li>
-                        <li><b>Author</b><span>lessons, worksheets, flip cards</span></li>
-                        <li><b>Designer</b><span>your own parts, in a few lines of JS</span></li>
-                    </ul>
-                    <span class="cta">Open Electra Academy <span aria-hidden="true">→</span></span>
+                    <ul class="tags mono"><li>CNC</li><li>CAD/CAM</li><li>Parametric</li><li>G-Code</li><li>3D preview</li><li>Cross-platform</li></ul>
+                    <span class="cta">Open CncCraft <span aria-hidden="true">→</span></span>
                 </div>
             </a>
         </section>
 
-        <!-- Featured -->
+        <!-- PatternMaster -->
         <section class="section">
             <div class="section-head reveal">
                 <span class="idx mono">02</span>
@@ -121,29 +173,57 @@
             </a>
         </section>
 
-        <!-- CncCraft -->
+        <!-- HoruCNC -->
         <section class="section">
             <div class="section-head reveal">
                 <span class="idx mono">03</span>
-                <h2>Draw. Mill. Done.</h2>
+                <h2>Pixels to paths</h2>
             </div>
 
-            <a class="feature feature--flip reveal" href="https://freegroup.github.io/CncCraft/" target="_blank" rel="noopener">
+            <a class="feature feature--flip reveal" href="https://freegroup.github.io/HoruCNC/" target="_blank" rel="noopener">
                 <div class="feature-shot">
-                    <img src="images/cnccraft.webp" width="1400" height="851" alt="CncCraft parametric CAD/CAM application showing a part design with milling toolpaths">
+                    <img src="images/horucnc.webp" width="1766" height="1464" alt="A teddy bear relief milled into a wooden workpiece — HoruCNC's 3D preview" loading="lazy">
                 </div>
                 <div class="feature-text">
-                    <span class="badge mono">FREE · DOWNLOAD</span>
-                    <h3>CncCraft</h3>
-                    <p class="feature-tag">From the first sketch to finished G-Code.</p>
+                    <span class="badge mono">OPEN SOURCE</span>
+                    <h3>HoruCNC</h3>
+                    <p class="feature-tag">Photo in. Toolpath out.</p>
                     <p>
-                        A free, parametric CAD/CAM application for CNC milling machines.
-                        Draw your design, pick a toolpath strategy, preview the result in 3D and export G-Code.
-                        Variables and formulas propagate through the whole model — change one dimension and everything follows.
-                        No subscription, no cloud, runs on Mac, Windows and Linux.
+                        Feed it an image and HoruCNC traces the contours into G-code for your mill or laser.
+                        The pipeline is a stack of filters you can reorder and tune&nbsp;— edges, thresholds, centerlines&nbsp;—
+                        until the toolpath looks right. PatternMaster's older, grumpier sibling.
                     </p>
-                    <ul class="tags mono"><li>CNC</li><li>CAD/CAM</li><li>Parametric</li><li>G-Code</li><li>3D preview</li><li>Cross-platform</li></ul>
-                    <span class="cta">Open CncCraft <span aria-hidden="true">→</span></span>
+                    <ul class="tags mono"><li>CNC</li><li>G-Code</li><li>GRBL</li><li>OpenCV</li><li>Python</li></ul>
+                    <span class="cta">Open HoruCNC <span aria-hidden="true">→</span></span>
+                </div>
+            </a>
+        </section>
+
+        <!-- Heart project -->
+        <section class="section">
+            <div class="section-head reveal">
+                <span class="idx mono">04</span>
+                <h2>The heart project</h2>
+            </div>
+
+            <a class="feature feature--heart reveal" href="https://electra.academy" target="_blank" rel="noopener">
+                <div class="feature-shot feature-shot--light">
+                    <img src="images/electra-academy.webp" width="1200" height="655" alt="A digital circuit with logic gates and flip-flops in Electra Academy">
+                </div>
+                <div class="feature-text">
+                    <span class="badge mono">♥ HEART PROJECT</span>
+                    <h3>Electra Academy</h3>
+                    <p class="feature-tag">You understand circuits by building them.</p>
+                    <p>
+                        A free platform for digital electronics: drag gates onto the canvas, wire them up and watch the current flow.
+                        When something doesn't work, you see <em>why</em>. No account, no install, free for schools.
+                    </p>
+                    <ul class="trio">
+                        <li><b>Simulator</b><span>build · simulate · understand</span></li>
+                        <li><b>Author</b><span>lessons, worksheets, flip cards</span></li>
+                        <li><b>Designer</b><span>your own parts, in a few lines of JS</span></li>
+                    </ul>
+                    <span class="cta">Open Electra Academy <span aria-hidden="true">→</span></span>
                 </div>
             </a>
         </section>
@@ -151,7 +231,7 @@
         <!-- Archive -->
         <section class="section">
             <div class="section-head reveal">
-                <span class="idx mono">04</span>
+                <span class="idx mono">05</span>
                 <h2>From the workshop</h2>
                 <p class="section-sub">New toys and old builds. Still running. Mostly.</p>
             </div>
@@ -167,7 +247,7 @@
                     </div>
                 </a>
                 <a href="https://freegroup.github.io/CampingElectricCalculator/#/" target="_blank" rel="noopener" class="card reveal">
-                    <div class="card-img"><img src="images/camping-calc.webp" loading="lazy" alt=""></div>
+                    <div class="card-img"><img src="images/camping-calc.webp" loading="lazy" alt="Camping Calc power-budget calculator"></div>
                     <div class="card-body">
                         <div class="card-top mono"><span>A-02</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>Camping Calc</h3>
@@ -177,7 +257,7 @@
                 </a>
 
                 <a href="https://github.com/freegroup/draw2d" target="_blank" rel="noopener" class="card reveal">
-                    <div class="card-img"><img src="images/draw2d.webp" loading="lazy" alt=""></div>
+                    <div class="card-img"><img src="images/draw2d.webp" loading="lazy" alt="Draw2D diagram library example"></div>
                     <div class="card-body">
                         <div class="card-top mono"><span>A-03</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>Draw2D</h3>
@@ -186,20 +266,10 @@
                     </div>
                 </a>
 
-                <a href="https://github.com/freegroup/HoruCNC" target="_blank" rel="noopener" class="card reveal">
-                    <div class="card-img"><img src="images/horucnc.webp" loading="lazy" alt=""></div>
+                <a href="https://github.com/freegroup/eagle_viewer" target="_blank" rel="noopener" class="card reveal">
+                    <div class="card-img"><img src="images/eagle-viewer.webp" loading="lazy" alt="Eagle Viewer rendering a PCB in the browser"></div>
                     <div class="card-body">
                         <div class="card-top mono"><span>A-04</span><span class="arrow" aria-hidden="true">↗</span></div>
-                        <h3>HoruCNC</h3>
-                        <p>Turns images into G-code for CNC milling. PatternMaster's older, grumpier sibling.</p>
-                        <ul class="tags mono"><li>CNC</li><li>G-Code</li><li>GRBL</li></ul>
-                    </div>
-                </a>
-
-                <a href="https://github.com/freegroup/eagle_viewer" target="_blank" rel="noopener" class="card reveal">
-                    <div class="card-img"><img src="images/eagle-viewer.webp" loading="lazy" alt=""></div>
-                    <div class="card-body">
-                        <div class="card-top mono"><span>A-05</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>Eagle Viewer</h3>
                         <p>Renders Eagle PCB files right in the browser. Built to understand the format, kept because it's fast.</p>
                         <ul class="tags mono"><li>PCB</li><li>Parser</li><li>WebGL</li></ul>
@@ -218,7 +288,7 @@
                         </svg>
                     </div>
                     <div class="card-body">
-                        <div class="card-top mono"><span>A-06</span><span class="arrow" aria-hidden="true">↗</span></div>
+                        <div class="card-top mono"><span>A-05</span><span class="arrow" aria-hidden="true">↗</span></div>
                         <h3>DigitalSimulator</h3>
                         <p>A digital logic simulator for Windows: drop gates and flip-flops, wire them up, watch the bits flow. C++ with Java bindings, from the CRT era.</p>
                         <ul class="tags mono"><li>Windows</li><li>C++</li><li>Logic</li></ul>
@@ -249,7 +319,7 @@
                             </figure>
 
                             <div class="w98-text">
-                                <div class="card-top mono"><span>A-07 · MUSEUM</span><span class="arrow" aria-hidden="true">↗</span></div>
+                                <div class="card-top mono"><span>A-06 · MUSEUM</span><span class="arrow" aria-hidden="true">↗</span></div>
                                 <h3>Draw2D DHTML</h3>
                                 <p class="w98-sub">Where it all began, ~20 years ago.</p>
                                 <p>
@@ -280,7 +350,7 @@
         <!-- About -->
         <section id="about" class="section">
             <div class="section-head reveal">
-                <span class="idx mono">05</span>
+                <span class="idx mono">06</span>
                 <h2>About the operator</h2>
             </div>
 

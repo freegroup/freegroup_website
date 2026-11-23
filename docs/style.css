@@ -3,15 +3,20 @@
    ------------------------------------------------------------------ */
 
 :root {
-    --bg: #f3f0e8;
-    --surface: #fbfaf6;
-    --ink: #17150f;
-    --muted: #6d685c;
-    --line: rgba(23, 21, 15, 0.11);
-    --line-strong: rgba(23, 21, 15, 0.22);
-    --accent: #ff5b1f;
-    --accent-soft: rgba(255, 91, 31, 0.12);
-    --ok: #1f8a4c;
+    --bg: #f4f5f8;
+    --surface: #ffffff;
+    --ink: #0c0e14;
+    --muted: #5a6473;
+    --line: rgba(12, 14, 20, 0.10);
+    --line-strong: rgba(12, 14, 20, 0.16);
+    --accent: #2b7fff;
+    --accent-soft: rgba(43, 127, 255, 0.12);
+    --accent-2: #ff5b1f;
+    --accent-2-soft: rgba(255, 91, 31, 0.12);
+    --ok: #12a150;
+    --glow-1: rgba(43, 127, 255, 0.12);
+    --glow-2: rgba(255, 91, 31, 0.10);
+    --grid: rgba(12, 14, 20, 0.04);
 
     /* machine */
     --bed: #ebe7dd;
@@ -32,15 +37,20 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #0e0e0c;
-        --surface: #161613;
-        --ink: #eeeae0;
-        --muted: #9a9486;
-        --line: rgba(238, 234, 224, 0.09);
-        --line-strong: rgba(238, 234, 224, 0.18);
-        --accent: #ff6a2b;
-        --accent-soft: rgba(255, 106, 43, 0.14);
-        --ok: #3ccf7e;
+        --bg: #0a0b0d;
+        --surface: #121419;
+        --ink: #eef1f6;
+        --muted: #949cab;
+        --line: rgba(238, 241, 246, 0.09);
+        --line-strong: rgba(238, 241, 246, 0.17);
+        --accent: #4da3ff;
+        --accent-soft: rgba(77, 163, 255, 0.16);
+        --accent-2: #ff6a2b;
+        --accent-2-soft: rgba(255, 106, 43, 0.14);
+        --ok: #35d07f;
+        --glow-1: rgba(77, 163, 255, 0.12);
+        --glow-2: rgba(255, 106, 43, 0.12);
+        --grid: rgba(238, 241, 246, 0.03);
 
         --bed: #121210;
         --bed-grid: rgba(238, 234, 224, 0.05);
@@ -61,7 +71,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
 body {
     margin: 0;
-    background: var(--bg);
+    background:
+        radial-gradient(1100px 620px at 88% -8%, var(--glow-1), transparent 62%),
+        radial-gradient(820px 520px at -6% 2%, var(--glow-2), transparent 58%),
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+        var(--bg);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px, auto;
     color: var(--ink);
     font-family: var(--font);
     font-size: 17px;
@@ -174,7 +190,12 @@ h1 {
     margin: 0 0 26px;
     font-variation-settings: "opsz" 96;
 }
-h1 .hl { color: var(--accent); }
+h1 .hl {
+    background: linear-gradient(115deg, var(--accent), #ff9448);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 .lead em { font-style: normal; color: var(--ink); }
 
 .lead {
@@ -278,12 +299,23 @@ h1 .hl { color: var(--accent); }
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 32px;
-    padding: 22px 0 0;
+    gap: 10px;
+    padding: 24px 0 0;
     margin: 0;
     color: var(--muted);
 }
-.facts b { color: var(--ink); font-weight: 500; font-size: 0.95rem; margin-right: 4px; }
+.facts li {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 7px;
+    padding: 8px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--surface) 70%, transparent);
+    transition: border-color .25s, color .25s, transform .25s;
+}
+.facts li:hover { border-color: var(--accent-2); color: var(--ink); transform: translateY(-2px); }
+.facts b { color: var(--accent); font-weight: 700; font-size: 1rem; }
 
 /* ---------------- sections ---------------- */
 
@@ -297,6 +329,17 @@ h1 .hl { color: var(--accent); }
     margin-bottom: 32px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--line-strong);
+    position: relative;
+}
+.section-head::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 64px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: 2px;
 }
 .section-head .idx { color: var(--accent); }
 .section-head h2 {
@@ -334,6 +377,7 @@ h1 .hl { color: var(--accent); }
     border-radius: 24px;
     background: var(--surface);
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03), 0 24px 50px -44px rgba(0, 0, 0, 0.5);
     transition: transform .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s, border-color .3s;
 }
 .feature:hover {
@@ -442,9 +486,10 @@ h1 .hl { color: var(--accent); }
     border: 1px solid var(--line-strong);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: transform .35s cubic-bezier(.16, 1, .3, 1), border-color .25s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    transition: transform .35s cubic-bezier(.16, 1, .3, 1), box-shadow .35s, border-color .25s;
 }
-.card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 26px 48px -36px rgba(255, 91, 31, 0.4); }
 
 .card-img {
     aspect-ratio: 16 / 10;
@@ -790,6 +835,119 @@ h1 .hl { color: var(--accent); }
     transition: opacity .7s ease, transform .8s cubic-bezier(.16, 1, .3, 1);
 }
 .js .reveal.in { opacity: 1; transform: none; }
+
+/* ---------------- bold section numerals ---------------- */
+
+.section-head .idx {
+    font-size: clamp(1.25rem, 2.6vw, 1.95rem);
+    font-weight: 700;
+    color: var(--accent);
+    align-self: center;
+    letter-spacing: 0;
+}
+
+/* ---------------- animated gradient border on hover ---------------- */
+
+.feature, .card { position: relative; }
+.feature > *, .card-body, .card-img { position: relative; z-index: 2; }
+.feature::before,
+.card:not(.w98-desk)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(135deg, var(--accent), transparent 42%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .4s;
+    pointer-events: none;
+    z-index: 1;
+}
+.feature:hover::before,
+.card:not(.w98-desk):hover::before { opacity: .75; }
+.feature--heart::before { background: linear-gradient(135deg, var(--heart), transparent 42%); }
+
+/* ---------------- zoomable images + lightbox ---------------- */
+
+.zoomable { cursor: zoom-in; }
+.zoomable img { cursor: zoom-in; }
+.zoomable::after {
+    content: "⤢";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    line-height: 1;
+    color: #fff;
+    background: rgba(12, 12, 10, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 9px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity .25s, transform .25s;
+    pointer-events: none;
+    z-index: 3;
+}
+.zoomable:hover::after,
+.feature:hover .zoomable::after,
+.card:hover .zoomable::after { opacity: 1; transform: none; }
+@media (hover: none) { .zoomable::after { opacity: .85; transform: none; } }
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: clamp(16px, 5vw, 56px);
+    background: rgba(8, 8, 6, 0.82);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.8);
+    transform: scale(.96);
+    transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+.lightbox.open img { transform: none; }
+.lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.2); }
+.lightbox-close:active { transform: scale(.94); }
 
 /* ---------------- responsive ---------------- */
 
