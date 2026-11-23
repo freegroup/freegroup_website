@@ -718,9 +718,15 @@ h1 .hl { color: var(--accent); }
 
 .about-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 1.3fr);
     gap: clamp(24px, 5vw, 64px);
     align-items: start;
+}
+.about-portrait img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
 }
 .about-text p { color: var(--muted); margin: 0 0 18px; }
 .about-text .big {
@@ -793,7 +799,8 @@ h1 .hl { color: var(--accent); }
     .gcode { border-left: 0; border-top: 1px solid var(--line); height: 7.6em; padding-block: 8px; }
     .feature, .feature--heart { grid-template-columns: minmax(0, 1fr); }
     .feature-shot { order: -1; min-height: 0; aspect-ratio: 16 / 9; }
-    .about-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr 1fr; }
+    .about-portrait { grid-column: 1 / -1; max-width: 260px; }
     .section-sub { margin-left: 0; width: 100%; }
 }
 
